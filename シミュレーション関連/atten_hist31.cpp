@@ -43,7 +43,7 @@ void atten_hist31(){
     
  
   TCanvas *cvs2=new TCanvas("object","object",900,900);
-  std::ifstream ob("compress.txt");
+  std::ifstream ob("compressno.txt");
   TH2D *object =new TH2D("object measument","",31,-15.5,15.5,31,-15.5,15.5);//                                                                                                        
   object->SetTitle("Object_measurement");
   object->GetXaxis()->SetTitle("deltaX");
