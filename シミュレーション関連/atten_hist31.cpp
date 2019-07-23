@@ -16,10 +16,7 @@
 void atten_hist31(){
   gStyle->SetPadRightMargin(0.15);
   gStyle->SetPalette(1);
-
-
-
-   std::ofstream bitdata("bitdata.txt");   
+   
 
   TCanvas *cvs1=new TCanvas("background","background",900,900);//TCanvasを用いることでいくつものグラフを一斉に表示できる 
   std::ifstream back("back_compress.txt");//バックグラウンドのデータ                                                                                                                                              
@@ -142,7 +139,7 @@ void atten_hist31(){
  //ベクトルプロットをまとめて書くこと
  //それさえできればプロットはできなくても問題なし
  
- /*
+ 
  TCanvas *cvs6=new TCanvas("back_error","back_error",900,900);
   TH2D*back_error =new TH2D("back_error","",31,-15.5,15.5,31,-15.5,15.5);
   double error_valueb;
@@ -175,7 +172,7 @@ void atten_hist31(){
 
 
 
- */
+ 
    return;
 
 
