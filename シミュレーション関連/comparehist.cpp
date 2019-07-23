@@ -1,8 +1,8 @@
-//#include<iostream>
-//#include<string>
-//#include<sstream>
-//#include<fstream>
-//#include<math.h>
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<fstream>
+#include<math.h>
 #include "TStyle.h"
 #include "TH1F.h"
 #include "TH2F.h"
@@ -90,89 +90,8 @@ void comparehist(){
  attenuation->SetStats(0);
 
 
- TCanvas *cvs5=new TCanvas("attenuation-custam","attenuation-custam",900,900);//減衰率が0より小さい点に0.001を打ち込む
- TH2D *attenuation2 =new TH2D("attenuation rate","",31,-15.5,15.5,31,-15.5,15.5);
- 
- double minius_reg;
- for(int i=0;i<32;i++)
-   {  
-     for(int j=0;j<32;j++)
-       {
-	 
-	 minius_reg = attenuation->GetBinContent(i,j);
-	 if(minius_reg<=0)
-	   {
-	     
-	     minius_reg=0.001;
-	     attenuation2->Fill(i-16,j-16,minius_reg);
-	     bitdata<<"0 ";
-	   }
-	 else if(minius_reg<1)
-	   {
-	     attenuation2->Fill(i-16,j-16,minius_reg);
-	     bitdata<<minius_reg*256<<" ";
-	   }
-	 else if(minius_reg<100)
-	   {
-	     minius_reg=0;
-	     attenuation2->Fill(i-16,j-16,minius_reg);
-	     bitdata<<"0 ";
-	   }
-       }
-     bitdata<<endl;
-   }
- attenuation2->SetTitle("Attenuation_custom");
- attenuation2->GetXaxis()->SetTitle("deltaX");
- attenuation2->GetXaxis()->CenterTitle();
- attenuation2->GetYaxis()->SetTitle("deltaY");
- attenuation2->GetYaxis()->CenterTitle();
- attenuation2->Draw("COLZ");
- attenuation2->SetStats(0);
- 
 
 
-
-
- //ここの二つのヒストグラムは正直未完成
- //狙いとしては
- //back_plot.txtとobject_plot.txtに
- //ベクトルプロットをまとめて書くこと
- //それさえできればプロットはできなくても問題なし
- 
- /*
- TCanvas *cvs6=new TCanvas("back_error","back_error",900,900);
-  TH2D*back_error =new TH2D("back_error","",31,-15.5,15.5,31,-15.5,15.5);
-  double error_valueb;
-  
-  for(int i=1;i<32;i++)
-    {
-      for(int j=1;j<32;j++)
-	{
-	 error_valueb=background->GetBinContent(i,j);
-	 backplot<<i-16<<" "<<j-16<<" "<<error_valueb<<endl;
-	 error_valueb=1/sqrt(error_valueb);
-	 back_error->Fill(i-16,j-16,error_valueb);
-       }
-   }
-  
-  TCanvas *cvs7=new TCanvas("object_error","object_error",900,900);
-  TH2D*object_error =new TH2D("object_error","",31,-15.5,15.5,31,-15.5,15.5);
-   double error_valueo;
-   
-   for(int i=1;i<32;i++)
-     {
-       for(int j=1;j<32;j++)
-         {
-	   error_valueo=object->GetBinContent(i,j);
-	   objectplot<<i-16<<" "<<j-16<<" "<<error_valueo<<endl;
-	   error_valueo=1/sqrt(error_valueo);
-	   object_error->Fill(i-16,j-16,error_valueo);
-	 }
-     }
-
-
-
- */
    return;
 
 
