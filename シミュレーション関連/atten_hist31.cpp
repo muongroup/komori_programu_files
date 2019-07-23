@@ -104,21 +104,21 @@ void atten_hist31(){
 	     
 	     minius_reg=0.001;
 	     attenuation2->Fill(i-16,j-16,minius_reg);
-	     bitdata<<"0 ";
+	     //  bitdata<<"0 ";
 	   }
 	 else if(minius_reg<1)
 	   {
 	     attenuation2->Fill(i-16,j-16,minius_reg);
-	     bitdata<<minius_reg*256<<" ";
+	     //  bitdata<<minius_reg*256<<" ";
 	   }
 	 else if(minius_reg<100)
 	   {
 	     minius_reg=0;
 	     attenuation2->Fill(i-16,j-16,minius_reg);
-	     bitdata<<"0 ";
+	     //  bitdata<<"0 ";
 	   }
        }
-     bitdata<<endl;
+     //  bitdata<<endl;
    }
  attenuation2->SetTitle("Attenuation_custom");
  attenuation2->GetXaxis()->SetTitle("deltaX");
@@ -149,12 +149,13 @@ void atten_hist31(){
       for(int j=1;j<32;j++)
 	{
 	 error_valueb=background->GetBinContent(i,j);
-	 backplot<<i-16<<" "<<j-16<<" "<<error_valueb<<endl;
+	 //	 backplot<<i-16<<" "<<j-16<<" "<<error_valueb<<endl;
 	 error_valueb=1/sqrt(error_valueb);
 	 back_error->Fill(i-16,j-16,error_valueb);
        }
    }
-  
+  back_error->Draw("colz");
+  back_error->SetContour(99);
   TCanvas *cvs7=new TCanvas("object_error","object_error",900,900);
   TH2D*object_error =new TH2D("object_error","",31,-15.5,15.5,31,-15.5,15.5);
    double error_valueo;
@@ -164,15 +165,36 @@ void atten_hist31(){
        for(int j=1;j<32;j++)
          {
 	   error_valueo=object->GetBinContent(i,j);
-	   objectplot<<i-16<<" "<<j-16<<" "<<error_valueo<<endl;
+	   // objectplot<<i-16<<" "<<j-16<<" "<<error_valueo<<endl;
 	   error_valueo=1/sqrt(error_valueo);
 	   object_error->Fill(i-16,j-16,error_valueo);
 	 }
      }
+   object_error->Draw("colz");
+   object_error->SetContour(99);
 
 
 
- 
+   TCanvas *cvs8=new TCanvas("attenuation_error","attenuation_error",900,900);
+   TH2D*attenuation_error =new TH2D("attenuation_error","",31,-15.5,15.5,31,-15.5,15.5);
+   double error_attenuation;
+   for(int i=1;i<32;i++)
+     {
+       for(int j=1;j<32;j++)
+         {
+
+	   error_valueb=background->GetBinContent(i,j);	   
+	   error_valueo=object->GetBinContent(i,j);
+	   error_attenuation=sqrt((error_valueo)/pow(error_valueb,2.0)+pow(error_valueo,2.0)/pow(error_valueb,3.0));
+       
+	   attenuation_error->Fill(i-16,j-16,error_attenuation);
+	 }
+     }
+
+   attenuation_error->Draw("colz");
+   attenuation_error->SetContour(99);
+
+   
    return;
 
 
