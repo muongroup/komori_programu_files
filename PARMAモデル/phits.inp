@@ -1,0 +1,61 @@
+[ T i t l e ]
+Sample input using [counter] section
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =      100000     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ emin(1)  = 1.000000000E-02 # (D=1.0) cut-off energy of proton (MeV)
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ emin(6)  = 1.000000000E-02 # (D=1.0) cut-off energy of muon+ (MeV)
+ emin(7)  = 1.000000000E-02 # (D=1.0) cut-off energy of muon- (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 1.000000000E-02 # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 1.000000000E-02 # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+ e-mode   =           2     # (D=0) 0: Normal, 1: Event generator mode Ver.1, 2: Ver.2
+ itall    =           1     # (D=0) 0:no tally at batch, 1:same, 2:different
+ negs     =           1     # (D=0) =1 EGS photon and electron
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ file(7)  = c:/phits/data/xsdir.jnd # (D=c:/phits/data/xsdir.jnd) nuclear data input file name
+ file(20) = c:/phits/XS/egs # (D=c:/phits/XS/egs) EGS library data folder name
+
+[ S o u r c e ]
+  totfact =   1.00E+00        $ normalization factor should be determined from output conversion factor
+   s-type =   100             # user defined source
+
+[ M a t e r i a l ]
+MAT[ 1 ] $ No material is used
+           Al       1.000
+
+[ C e l l ]
+  1     0          -1
+  2     0           1 -999
+ 99    -1              999
+
+[ S u r f a c e ]
+   1          so     10.0
+ 999          so     1.0000000E+02
+
+[ T - T r a c k ]
+    title = Track Detection in reg mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 1
+   volume                   # combined, lattice or level structure 
+   non     reg      vol     # reg definition
+    1        1   4/3*pi*10**3
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =   0.01      # minimum value of e-mesh points
+     emax =   1.0e6      # maximum value of e-mesh points
+       ne =   90            # number of e-mesh points
+     unit =    2            # unit is [1/cm^2/MeV/source]
+     axis =   eng            # axis of output
+     file = track_reg.out  # file name of output for the above axis
+     part =  all      
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[END]
+
