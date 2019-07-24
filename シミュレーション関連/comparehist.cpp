@@ -23,7 +23,7 @@ void comparehist(){
   std::ofstream bitdata("bitdata.txt");   
 
   TCanvas *cvs1=new TCanvas("background","background",900,900);//TCanvasを用いることでいくつものグラフを一斉に表示できる 
-  std::ifstream back("compress.txt");//バックグラウンドのデータ                                                                                                                                              
+  std::ifstream back("compress300.txt");//バックグラウンドのデータ                                                                                                                                              
   TH2D *background =new TH2D("background measurement","",31,-15.5,15.5,31,-15.5,15.5);//バックグラウンドデータをプロット  
   background->SetStats(0);//統計ボックス
   background->SetTitle("Background_measurement");
@@ -43,7 +43,7 @@ void comparehist(){
     
  
   TCanvas *cvs2=new TCanvas("object","object",900,900);
-  std::ifstream ob("compressno.txt");
+  std::ifstream ob("compressno300.txt");
   TH2D *object =new TH2D("object measument","",31,-15.5,15.5,31,-15.5,15.5);//                                                                                                        
   object->SetTitle("Object_measurement");
   object->GetXaxis()->SetTitle("deltaX");
