@@ -16,7 +16,7 @@ int main(){
    double divide;//検出器をピクセル等分する                                      
    double height=15;//検出器の間隔 
    // int counter[31]                                         
-   double cutenergy=10000;//あるエネルギー以下は使わないという閾値
+   double cutenergy=100000000;//あるエネルギー以下は使わないという閾値
       divide=ds/pix;
    half=ds/2.;
    
@@ -55,7 +55,7 @@ std::ofstream spectrum4;
    int cc=0;  //ccは検出器上面で検出された粒子の数を数えている
 
  
-   for(int filenumber=1;filenumber<11;filenumber++)
+   for(int filenumber=1;filenumber<6;filenumber++)
      {
        char outfile[] = "cross_reg_dmp.out.001";  //読み込むファイルの指\ \ 定                                                                        
        char numb_1,numb_10;

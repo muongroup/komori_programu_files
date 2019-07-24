@@ -1,8 +1,8 @@
-//#include<iostream>
-//#include<string>
-//#include<sstream>
-//#include<fstream>
-//#include<math.h>
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<fstream>
+#include<math.h>
 #include "TStyle.h"
 #include "TH1F.h"
 #include "TH2F.h"
@@ -19,7 +19,7 @@ void histogram_one_dimension(){
     // gStyle->SetPalette(1);
     gStyle->SetFrameLineWidth(5);
  
-  string input_file_name="accuracy80.txt";
+  string input_file_name="accuracy120.txt";
   Int_t bin_width=300;//ビンの数
   Double_t x_min=0;
   Double_t x_max=300;
