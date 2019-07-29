@@ -22,8 +22,8 @@ void attenuation_histgram_experiment(){
   Double_t object_measurement_time;
   Double_t rate;
 
-  background_time=219;
-  object_measurement_time=316;
+  background_time=450;
+  object_measurement_time=132;
 
   rate=background_time/object_measurement_time;
 
