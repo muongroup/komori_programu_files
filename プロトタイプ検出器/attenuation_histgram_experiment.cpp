@@ -1,3 +1,8 @@
+
+
+
+
+
 #include<iostream>
 #include<string>
 #include<sstream>
@@ -16,13 +21,13 @@
 void attenuation_histgram_experiment(){
   gStyle->SetPadRightMargin(0.15);
   gStyle->SetPalette(1);
-  char output1[]="BGoutput_156.txt";
+  char output1[]="output.txt";
   char output2[]="OBoutput.txt";
   Double_t background_time;
   Double_t object_measurement_time;
   Double_t rate;
 
-  background_time=156;
+  background_time=354;
   object_measurement_time=132;
 
   rate=background_time/object_measurement_time;
@@ -72,7 +77,7 @@ void attenuation_histgram_experiment(){
  TCanvas *cvs3=new TCanvas("substraction","substraction",900,900);
   TH2D *hist3 =new TH2D("substraction ","",31,-15.5,15.5,31,-15.5,15.5);
  hist3-> SetTitle("substraction");
- hist3->Add(hist1,hist2,1,-rate);//両データを計測時間で割る
+ hist3->Add(hist1,hist2,1/background_time,-1/object_measurement_time);//両データを計測時間で割る
  hist3->GetXaxis()->SetTitle("deltaX");
  hist3->GetXaxis()->CenterTitle();
  hist3->GetYaxis()->SetTitle("deltaY");
@@ -83,7 +88,7 @@ void attenuation_histgram_experiment(){
 
  TCanvas *cvs4=new TCanvas("attenuation","attenuation",900,900);
  TH2D *hist4 =new TH2D("attenuation rate","",31,-15.5,15.5,31,-15.5,15.5);
- hist4->Divide(hist3,hist1);
+ hist4->Divide(hist3,hist1,1,1/background_time);
  hist4->SetTitle("Attenuation");
  hist4->GetXaxis()->SetTitle("deltaX");
  hist4->GetXaxis()->CenterTitle();
