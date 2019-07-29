@@ -21,13 +21,13 @@
 void attenuation_histgram_experiment(){
   gStyle->SetPadRightMargin(0.15);
   gStyle->SetPalette(1);
-  char output1[]="output.txt";
+  char output1[]="BGoutput217.txt";
   char output2[]="OBoutput.txt";
   Double_t background_time;
   Double_t object_measurement_time;
   Double_t rate;
 
-  background_time=354;
+  background_time=217;
   object_measurement_time=132;
 
   rate=background_time/object_measurement_time;
