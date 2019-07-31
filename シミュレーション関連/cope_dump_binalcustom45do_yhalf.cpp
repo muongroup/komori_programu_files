@@ -40,7 +40,7 @@ int main(){
    std::ofstream ofs;
    ofs.open("hist_data2.txt",ios::app);//今は使わない   
    std::ofstream ofst;
-   ofst.open("compresshalf.txt");// 
+   ofst.open("compressxhalf.txt");// 
    std::ofstream ofstr;
    ofstr.open("generaldata.txt",ios::app);//今は使わない  
    /*  std::ofstream spectrum1;
@@ -117,39 +117,72 @@ std::ofstream spectrum4;
 	   
 	   
 	   //	   cout<<e<<endl;  
-	   if(-half+divide*0<=xu && xu<-half+divide*2)//座標からピクセルに割り振る、ここをもっときれいにしたい                                    
+	   if(-half+divide*0<=xu && xu<-half+divide*1)//座標からピクセルに割り振る、ここをもっときれいにしたい
 	     { xu=0;}
-	   else if(-half+divide*2.<=xu && xu<-half+divide*4.)
+	   else if(-half+divide*1.<=xu && xu<-half+divide*2.)
 	     { xu=1;}
-	   else if(-half+divide*4.<=xu && xu<-half+divide*6.)
+	   else if(-half+divide*2.<=xu && xu<-half+divide*3.)
 	     { xu=2;}
-	   else if(-half+divide*6.<=xu && xu<-half+divide*8.)
+	   else if(-half+divide*3.<=xu && xu<-half+divide*4.)
 	     { xu=3;}
-	   else if(-half+divide*8.<=xu && xu<-half+divide*10.)
+	   else if(-half+divide*4.<=xu && xu<-half+divide*5.)
 	     { xu=4;}
-	   else if(-half+divide*10.<=xu && xu<-half+divide*12.)
+	   else if(-half+divide*5.<=xu && xu<-half+divide*6.)
 	     { xu=5;}
-	   else if(-half+divide*12.<=xu && xu<-half+divide*14.)
+	   else if(-half+divide*6.<=xu && xu<-half+divide*7.)
 	     { xu=6;}
-	   else if(-half+divide*14.<=xu && xu<-half+divide*16.)
+	   else if(-half+divide*7.<=xu && xu<-half+divide*8.)
 	     { xu=7;}
-	   
-	   if(-half+divide*0.<=xd && xd<-half+divide*2.)
+	   else if(-half+divide*8.<=xu && xu<-half+divide*9.)
+	     { xu=8;}
+	   else if(-half+divide*9.<=xu && xu<-half+divide*10.)
+	     { xu=9;}
+	   else if(-half+divide*10.<=xu && xu<-half+divide*11.)
+	     { xu=10;}
+	   else if(-half+divide*11.<=xu && xu<-half+divide*12.)
+	     { xu=11;}
+	   else if(-half+divide*12.<=xu && xu<-half+divide*13.)
+	     { xu=12;}
+	   else if(-half+divide*13.<=xu && xu<-half+divide*14.)
+	     { xu=13;}
+	   else if(-half+divide*14.<=xu && xu<-half+divide*15.)
+	     { xu=14;}
+	   else if(-half+divide*15.<=xu && xu<=-half+divide*16.)
+	     { xu=15;}
+
+	   if(-half+divide*0.<=xd && xd<-half+divide*1.)
 	     { xd=0;}
-	   else if(-half+divide*2.<=xd && xd<-half+divide*4.)
+	   else if(-half+divide*1.<=xd && xd<-half+divide*2.)
 	     { xd=1;}
-	   else if(-half+divide*4.<=xd && xd<-half+divide*6.)
+	   else if(-half+divide*2.<=xd && xd<-half+divide*3.)
 	     { xd=2;}
-	   else if(-half+divide*6.<=xd && xd<-half+divide*8.)
+	   else if(-half+divide*3.<=xd && xd<-half+divide*4.)
 	     { xd=3;}
-	   else if(-half+divide*8.<=xd && xd<-half+divide*10.)
+	   else if(-half+divide*4.<=xd && xd<-half+divide*5.)
 	     { xd=4;}
-	   else if(-half+divide*10.<=xd && xd<-half+divide*12.)
+	   else if(-half+divide*5.<=xd && xd<-half+divide*6.)
 	     { xd=5;}
-	   else if(-half+divide*12.<=xd && xd<-half+divide*14.)
+	   else if(-half+divide*6.<=xd && xd<-half+divide*7.)
 	     { xd=6;}
-	   else if(-half+divide*14.<=xd && xd<-half+divide*16.)
+	   else if(-half+divide*7.<=xd && xd<-half+divide*8.)
 	     { xd=7;}
+	   else if(-half+divide*8.<=xd && xd<-half+divide*9.)
+	     { xd=8;}
+	   else if(-half+divide*9.<=xd && xd<-half+divide*10.)
+	     { xd=9;}
+	   else if(-half+divide*10.<=xd && xd<-half+divide*11.)
+	     { xd=10;}
+	   else if(-half+divide*11.<=xd && xd<-half+divide*12.)
+	     { xd=11;}
+	   else if(-half+divide*12.<=xd && xd<-half+divide*13.)
+	     { xd=12;}
+	   else if(-half+divide*13.<=xd && xd<-half+divide*14.)
+	     { xd=13;}
+	   else if(-half+divide*14.<=xd && xd<-half+divide*15.)
+	     { xd=14;}
+	   else if(-half+divide*15.<=xd && xd<=-half+divide*16.)
+	     { xd=15;}
+	 
 
 
 

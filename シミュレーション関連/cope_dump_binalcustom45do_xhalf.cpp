@@ -153,41 +153,72 @@ std::ofstream spectrum4;
 
 
 
-	   if(-half+divide*0.<=yu && yu<-half+divide*2.)
+	   if(-half+divide*0.<=yu && yu<-half+divide*1.)
 	     { yu=0;}
-	   else if(-half+divide*2.<=yu && yu<-half+divide*4.)
+	   else if(-half+divide*1.<=yu && yu<-half+divide*2.)
 	     { yu=1;}
-	   else if(-half+divide*4.<=yu && yu<-half+divide*6.)
+	   else if(-half+divide*2.<=yu && yu<-half+divide*3.)
 	     { yu=2;}
-	   else if(-half+divide*6.<=yu && yu<-half+divide*8.)
+	   else if(-half+divide*3.<=yu && yu<-half+divide*4.)
 	     { yu=3;}
-	   else if(-half+divide*8.<=yu && yu<-half+divide*10.)
+	   else if(-half+divide*4.<=yu && yu<-half+divide*5.)
 	     { yu=4;}
-	   else if(-half+divide*10.<=yu && yu<-half+divide*12.)
+	   else if(-half+divide*5.<=yu && yu<-half+divide*6.)
 	     { yu=5;}
-	   else if(-half+divide*12.<=yu && yu<-half+divide*14.)
+	   else if(-half+divide*6.<=yu && yu<-half+divide*7.)
 	     { yu=6;}
-	   else if(-half+divide*14.<=yu && yu<-half+divide*16.)
+	   else if(-half+divide*7.<=yu && yu<-half+divide*8.)
 	     { yu=7;}
-	  
+	   else if(-half+divide*8.<=yu && yu<-half+divide*9.)
+	     { yu=8;}
+	   else if(-half+divide*9.<=yu && yu<-half+divide*10.)
+	     { yu=9;}
+	   else if(-half+divide*10.<=yu && yu<-half+divide*11.)
+	     { yu=10;}
+	   else if(-half+divide*11.<=yu && yu<-half+divide*12.)
+	     { yu=11;}
+	   else if(-half+divide*12.<=yu && yu<-half+divide*13.)
+	     { yu=12;}
+	   else if(-half+divide*13.<=yu && yu<-half+divide*14.)
+	     { yu=13;}
+	   else if(-half+divide*14.<=yu && yu<-half+divide*15.)
+	     { yu=14;}
+	   else if(-half+divide*15.<=yu && yu<-half+divide*16.)
+	     { yu=15;}
 	   
 	   
-	   if(-half+divide*0.<=yd && yd<-half+divide*2)
+	   if(-half+divide*0.<=yd && yd<-half+divide*1)
 	     { yd=0;}
-	   else if(-half+divide*2.<=yd && yd<-half+divide*4.)
+	   else if(-half+divide*1.<=yd && yd<-half+divide*2.)
 	     { yd=1;}
-	   else if(-half+divide*4.<=yd && yd<-half+divide*6.)
+	   else if(-half+divide*2.<=yd && yd<-half+divide*3.)
 	     { yd=2;}
-	   else if(-half+divide*6.<=yd && yd<-half+divide*8.)
+	   else if(-half+divide*3.<=yd && yd<-half+divide*4.)
 	     { yd=3;}
-	   else if(-half+divide*8.<=yd && yd<-half+divide*10.)
+	   else if(-half+divide*4.<=yd && yd<-half+divide*5.)
 	     { yd=4;}
-	   else if(-half+divide*10.<=yd && yd<-half+divide*12.)
+	   else if(-half+divide*5.<=yd && yd<-half+divide*6.)
 	     { yd=5;}
-	   else if(-half+divide*12.<=yd && yd<-half+divide*14.)
+	   else if(-half+divide*6.<=yd && yd<-half+divide*7.)
 	     { yd=6;}
-	   else if(-half+divide*14.<=yd && yd<-half+divide*16.)
+	   else if(-half+divide*7.<=yd && yd<-half+divide*8.)
 	     { yd=7;}
+	   else if(-half+divide*8.<=yd && yd<-half+divide*9.)
+	     { yd=8;}
+	   else if(-half+divide*9.<=yd && yd<-half+divide*10.)
+	     { yd=9;}
+	   else if(-half+divide*10.<=yd && yd<-half+divide*11.)
+	     { yd=10;}
+	   else if(-half+divide*11.<=yd && yd<-half+divide*12.)
+	     { yd=11;}
+	   else if(-half+divide*12.<=yd && yd<-half+divide*13.)
+	     { yd=12;}
+	   else if(-half+divide*13.<=yd && yd<-half+divide*14.)
+	     { yd=13;}
+	   else if(-half+divide*14.<=yd && yd<-half+divide*15.)
+	     { yd=14;}
+	   else if(-half+divide*15.<=yd && yd<-half+divide*16.)
+	     { yd=15;}
 	  
 	   
 	   // cout<<xu<<" "<<yu<<" "<<xd<<" "<<yd<<endl;
