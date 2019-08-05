@@ -40,7 +40,7 @@ int main(){
    std::ofstream ofs;
    ofs.open("hist_data2.txt",ios::app);//今は使わない   
    std::ofstream ofst;
-   ofst.open("compresshalf.txt");// 
+   ofst.open("compressxhalf.txt");// 
    std::ofstream ofstr;
    ofstr.open("generaldata.txt",ios::app);//今は使わない  
    /*  std::ofstream spectrum1;
@@ -55,7 +55,7 @@ std::ofstream spectrum4;
    int cc=0;  //ccは検出器上面で検出された粒子の数を数えている
 
  
-   for(int filenumber=1;filenumber<6;filenumber++)
+   for(int filenumber=1;filenumber<11;filenumber++)
      {
        char outfile[] = "cross_reg_dmp.out.001";  //読み込むファイルの指\ \ 定                                                                        
        char numb_1,numb_10;

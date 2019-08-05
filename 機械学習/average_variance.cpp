@@ -1,0 +1,45 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+#include<string>
+using namespace std;
+
+int main(){
+  std::ofstream output("average_variance.txt");
+  double number_of_verification=50000;
+  for(int i=0;i<30;i++)
+    {
+      // Int_t num;
+      //      num=i*10;
+      string input_file_name="accuracy"+to_string(i)+".txt";
+      cout<<input_file_name<<endl;
+      std::ifstream file1(input_file_name);                                                                                                                                              
+      
+      int n=0;
+      double k[300],l[300];
+      double average=0;
+      double var=0;
+      while(!file1.eof())
+	{
+	  
+	  file1>>k[n]>>l[n] ;
+	  //      cout<<i<<" "<<k<<" "<<j<<endl;
+	  average=average+(n+0.5)*l[n];
+	  n++;
+	}
+      average=average/number_of_verification;//•½‹Ï’l“±o
+      cout<<average<<endl;
+      output<<average<<" ";
+      for(int j=0;j<300;j++)
+	{
+	  
+	  var=var+(average-(j+0.5))*(average-(j+0.5))*l[j];
+	}
+      
+      var=var/number_of_verification;
+      cout<<var<<" "<<sqrt(var)<<endl;
+      output<<var<<" "<<sqrt(var)<<endl;
+    }
+  
+  return 0;
+}

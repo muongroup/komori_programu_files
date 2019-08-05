@@ -102,7 +102,7 @@ void atten_hist31_xyhalf(){
 	 if(minius_reg<=0)
 	   {
 	     
-	     minius_reg=0.001;
+	     minius_reg=0.00001;
 	     attenuation2->Fill(i-8,j-8,minius_reg);
 	     //  bitdata<<"0 ";
 	   }

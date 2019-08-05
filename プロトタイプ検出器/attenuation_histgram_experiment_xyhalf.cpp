@@ -13,24 +13,24 @@
 #include "TROOT.h"
 #include "TMath.h"
 
-void attenuation_histgram_experiment(){
+void attenuation_histgram_experiment_xyhalf(){
   gStyle->SetPadRightMargin(0.15);
   gStyle->SetPalette(1);
-  Double_t x_bin=31;
-  Double_t y_bin=31;
-  Double_t x_min=-15.5;
-  Double_t x_max=15.5;
-  Double_t y_min=-15.5;
-  Double_t y_max=15.5; 
+  Double_t x_bin=15;
+  Double_t y_bin=15;
+  Double_t x_min=-7.5;
+  Double_t x_max=7.5;
+  Double_t y_min=-7.5;
+  Double_t y_max=7.5; 
 
-  char output1[]="BGoutput.txt";
-  char output2[]="OBoutput202.txt";
+  char output1[]="BGoutput_xyhalf.txt";
+  char output2[]="OBoutput_xyhalf273.txt";
   Double_t background_time;
   Double_t object_measurement_time;
   Double_t rate;
 
   background_time=451;
-  object_measurement_time=202;
+  object_measurement_time=273;
 
   rate=background_time/object_measurement_time;
 
@@ -91,7 +91,7 @@ void attenuation_histgram_experiment(){
  
 
  TCanvas *cvs4=new TCanvas("attenuation","attenuation",900,900);
- TH2D *hist4 =new TH2D("attenuation rate","",31,-15.5,15.5,31,-15.5,15.5);
+ TH2D *hist4 =new TH2D("attenuation rate","",x_bin,x_min,x_max,y_bin,y_min,y_max);
  hist4->Divide(hist3,hist1,1,1/background_time);
  hist4->SetTitle("Attenuation");
  hist4->GetXaxis()->SetTitle("deltaX");
@@ -109,9 +109,9 @@ void attenuation_histgram_experiment(){
  TH2D *hist5 =new TH2D("attenuation-custom","",x_bin,x_min,x_max,y_bin,y_min,y_max);
  
  double minius_reg;
- for(Int_t i=1;i<32;i++)
+ for(Int_t i=1;i<16;i++)
    {  
-     for(Int_t j=1;j<32;j++)
+     for(Int_t j=1;j<16;j++)
        {
 	 
 	 minius_reg = hist4->GetBinContent(i,j);
@@ -119,16 +119,16 @@ void attenuation_histgram_experiment(){
 	   {
 	     
 	     minius_reg=0.001;
-	     hist5->Fill(i-16,j-16,minius_reg);
+	     hist5->Fill(i-8,j-8,minius_reg);
 	   }
 	 else if(minius_reg<1)
 	   {
-	     hist5->Fill(i-16,j-16,minius_reg);
+	     hist5->Fill(i-8,j-8,minius_reg);
 	   }
 	 else if(minius_reg<100)
 	   {
 	     minius_reg=0;
-	     hist5->Fill(i-16,j-16,minius_reg);
+	     hist5->Fill(i-8,j-8,minius_reg);
 	   }
        }
    }
@@ -148,15 +148,15 @@ void attenuation_histgram_experiment(){
  TH2D*hist6 =new TH2D("back_error","",x_bin,x_min,x_max,y_bin,y_min,y_max);
  double error_valueb;
  
- for(int i=1;i<32;i++)
+ for(int i=1;i<16;i++)
    {
-     for(int j=1;j<32;j++)
+     for(int j=1;j<16;j++)
        {
 	 double error;
 	 error_valueb=hist1->GetBinContent(i,j);
 	 // backplot<<i-16<<" "<<j-16<<" "<<error_valueb<<endl;
 	  error=1/sqrt(error_valueb);
-	  hist6->Fill(i-16,j-16,error);
+	  hist6->Fill(i-8,j-8,error);
        }
    }
  hist6->SetContour(99);//グラデーションを99分割
@@ -166,15 +166,15 @@ void attenuation_histgram_experiment(){
   TH2D *hist7 =new TH2D("object_error","",x_bin,x_min,x_max,y_bin,y_min,y_max);
   double error_valueo;
  
-  for(int i=1;i<32;i++)
+  for(int i=1;i<16;i++)
     {
-      for(int j=1;j<32;j++)
+      for(int j=1;j<16;j++)
 	{
 	  double error;
 	  error_valueo=hist2->GetBinContent(i,j);
 	  // objectplot<<i-16<<" "<<j-16<<" "<<error_valueo<<endl;
 	  error=1/sqrt(error_valueo);
-	  hist7->Fill(i-16,j-16,error);
+	  hist7->Fill(i-8,j-8,error);
 	}
     }
   hist7->SetContour(99);//グラデーションを99分割
@@ -184,16 +184,16 @@ void attenuation_histgram_experiment(){
  TH2D*hist8 =new TH2D("attenuation_error","",x_bin,x_min,x_max,y_bin,y_min,y_max);
  double attenuation_error;
 
- for(Int_t i=1;i<32;i++)
+ for(Int_t i=1;i<16;i++)
    {
-     for(Int_t j=1;j<32;j++)
+     for(Int_t j=1;j<16;j++)
        {
 	 error_valueb=hist1->GetBinContent(i,j);
 	 //	 error_valueb=sqrt(error_valueb);
 	 error_valueo=hist2->GetBinContent(i,j);
 	 // error_valueo=sqrt(error_valueo);
 	 attenuation_error=rate*sqrt(((error_valueo)/((error_valueb)*(error_valueb)))+(error_valueo*error_valueo)/(error_valueb*error_valueb*error_valueb));
-	 hist8->Fill(i-16,j-16,attenuation_error);
+	 hist8->Fill(i-8,j-8,attenuation_error);
        }
    }
  hist8->SetContour(99);//グラデーションを99分割

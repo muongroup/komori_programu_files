@@ -13,22 +13,22 @@
 #include "TROOT.h"
 #include "TMath.h"
 
-void comparehist_xyhalf(){
+void comparehist_yhalf(){
   gStyle->SetPadRightMargin(0.15);
   gStyle->SetPalette(1);
 
   // std::ofstream backplot("back_plot.txt");
   //  std::ofstream objectplot("object_plot.txt");
-  Double_t x_bin=15;
+  Double_t x_bin=31;
   Double_t y_bin=15;
-  Double_t x_min=-7.5;
-  Double_t x_max=7.5;
+  Double_t x_min=-15.5;
+  Double_t x_max=15.5;
   Double_t y_min=-7.5;
   Double_t y_max=7.5; 
   std::ofstream bitdata("bitdata.txt");   
 
   TCanvas *cvs1=new TCanvas("background","background",900,900);//TCanvasを用いることでいくつものグラフを一斉に表示できる 
-  std::ifstream back("compress_xyhalf.txt");//バックグラウンドのデータ                                                                                                                                              
+  std::ifstream back("compress_yhalf.txt");//バックグラウンドのデータ                                                                                                                                              
   TH2D *background =new TH2D("background measurement","",x_bin,x_min,x_max,y_bin,y_min,y_max);//バックグラウンドデータをプロット  
   background->SetStats(0);//統計ボックス
   background->SetTitle("Background_measurement");
@@ -48,7 +48,7 @@ void comparehist_xyhalf(){
     
  
   TCanvas *cvs2=new TCanvas("object","object",900,900);
-  std::ifstream ob("compressno_xyhalf.txt");
+  std::ifstream ob("compressno_yhalf.txt");
   TH2D *object =new TH2D("object measument","",x_bin,x_min,x_max,y_bin,y_min,y_max);//                                                                                                        
   object->SetTitle("Object_measurement");
   object->GetXaxis()->SetTitle("deltaX");
