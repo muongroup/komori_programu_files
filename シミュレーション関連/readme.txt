@@ -1,5 +1,0 @@
-cope_dump_binalcustom45do.cpp・・検出器を45°回転させたデータを解析する
-cope_dump_binalcustom45do_xyhalf
-・・検出器を45°回転させたデータを解析する。検出器のチャンネル数を半分として見ている。
-atten_hist31.cpp
-・・減衰率を導出するプログラム
