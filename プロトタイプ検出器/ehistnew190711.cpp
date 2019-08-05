@@ -79,7 +79,7 @@ void ehistnew190711(){
       {
 	Double_t dummy;
 	pedestal>>dummy>>ped[i];
-	thresh_ch[i]=1000;
+	thresh_ch[i]=1100;
       }//今はここでthresholdを一括に決めている
     //    thresh_ch[5]=1400;
     TH2D *test2d1 = new TH2D("test2d1","",16,15.5,31.5,16,-0.5,15.5);       
