@@ -4,10 +4,10 @@
 
 
 ### deposit_analysis2.cpp
--PHITSのデータを編集するプログラム
+- PHITSのデータを編集するプログラム
 
 ### data_split.cpp
--deposit_analysis2.cppで処理したデータを分割するプログラム
+- deposit_analysis2.cppで処理したデータを分割するプログラム
 
 ### histogram_one_dimension.cpp
 - 一次元ヒストグラムを作成するプログラム　
