@@ -40,11 +40,6 @@ int main(){
      }
    double **counter=dummy1+n;//counterという2次元配列を負の領域に解放
 
-
-
-   for(int ee=1;ee<11;ee++)
-     {
-   
    for(int i=-n;i<n+1;i++)
      for(int j=-n;j<n+1;j++)
        {
@@ -52,14 +47,9 @@ int main(){
 	   } 
    
       
-   char outname[]="compress0100.txt";
-   int cutenergy=ee*100;//あるエネルギー以下は使わないという閾値
-   cout<<ee*100<<" "<<outname<<endl;
-
-   outname[9]='0'+ee;
-   cout<<outname<<endl;
    std::ofstream ofst;
-   ofst.open(outname);//
+   ofst.open("compress15.txt",ios::app);// 
+   
    std::ofstream spectrum1;
    spectrum1.open("energyspectrum44.txt");
 std::ofstream spectrum2;	
@@ -69,10 +59,6 @@ std::ofstream spectrum3;
 std::ofstream spectrum4;
    spectrum4.open("energyspectrum-4-4.txt");//今は使ってないから 
 
-
-
-
-   
    int cc=0;  //ccは検出器上面で検出された粒子の数を数えている
    for(int filenumber=1;filenumber<6;filenumber++)
      {
@@ -312,7 +298,7 @@ std::ofstream spectrum4;
 	 }
      }
    
-   /*
+   
   std::ofstream temp;
   temp.open("tempo.txt");
   for(int i=0;i<16;i++)
@@ -321,7 +307,7 @@ std::ofstream spectrum4;
 	{
 	  //	  temp<<i<<" "<<j<<" "<<tempo_counter[i][j]<<endl;
 	}
-	}*/
+    }
   
   // std::ofstream rate;
   // rate.open("degree.txt");//171109角度ごとの強度をまとめた
@@ -330,9 +316,6 @@ std::ofstream spectrum4;
   time_estimation<<"time="<<cc/(ds*ds*60*24)<<" hours"<<endl;
  
   cout<<cc<<" "<<c<<" "<<counter[0][0]<<endl;
-
-
-     }
   //  cout<<"10deg="<<tendigcounter<<endl;//171109
   // cout<<"20deg="<<twedigcounter<<endl;//171109
   // cout<<"30deg="<<thrdigcounter<<endl;//171109

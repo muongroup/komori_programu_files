@@ -314,7 +314,7 @@ std::ofstream spectrum4;
 
 
   cout<<cc<<" "<<c<<endl;
-}
+ }
   
   return 0;
 }
