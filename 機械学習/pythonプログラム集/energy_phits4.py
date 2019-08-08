@@ -10,9 +10,9 @@ from keras.models import model_from_json
 import csv #csvファイルの読みこみ
 
 #home/komori/python_practice/machine_learning_data_set/
-data1 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data_1_4_1.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
-data2 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data_1_4_2.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
-data3 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data_1_4_3.csv',sep=',')#csvファイルを読み込んだ番上の行をラベルと認識してくれる 
+data1 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data1_6_1.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
+data2 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data1_6_2.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
+data3 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data1_6_3.csv',sep=',')#csvファイルを読み込んだ番上の行をラベルと認識してくれる 
 
 
 
@@ -56,17 +56,17 @@ print(np.shape(data))
 #print(y_train)
 
 #テスト用のデータ
-x_test=data[0:2500000,0:3]
+x_test=data[0:2500000,0:10]
 #print(np.shape(x_test))
 print(x_test)
 x_test=x_test.round(1)
 print(x_test)
-y_test=data[0:2500000,5]
+y_test=data[0:2500000,19]
 #print(np.shape(y_test))
 print(y_test)
 y_test=np.ceil(y_test)
 y_test=y_test-1
-y_test/=10
+y_test/=1
 
 #y_train=np.trunc(y_train)
 y_test=np.trunc(y_test)
@@ -80,17 +80,17 @@ y_test=np.trunc(y_test)
 
 #y_train=np_utils.to_categorical(y_train,100)#ワンホット化
 #print(np.shape(y_train))
-y_test=np_utils.to_categorical(y_test,30)#ワンホット化
+y_test=np_utils.to_categorical(y_test,300)#ワンホット化
 
 #モデルの読み込み
-model = model_from_json(open('/mnt/c/Users/komori/Desktop/weight_30/model.json','r').read())
-model.load_weights('/mnt/c/Users/komori/Desktop/weight_30/weihgts.h5')
+model = model_from_json(open('/mnt/c/Users/komori/Desktop/19層シミュレーション/プラシン10/model.json','r').read())
+model.load_weights('/mnt/c/Users/komori/Desktop/19層シミュレーション/プラシン10/weihgts.h5')
 
 
 
 
 
-model.compile(loss='categorical_crossentropy',optimizer=SGD(lr=0.01),metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy',optimizer=SGD(lr=0.01,momentum=0.0,decay=0.0,nesterov=False),metrics=['accuracy'])
 
 
 #epochs=1
@@ -108,15 +108,21 @@ predict=model.predict(x_test)
 path_w1 ='/mnt/c/Users/komori/Desktop/test1.csv'
 path_w2 ='/mnt/c/Users/komori/Desktop/test2.csv'
 path_w3 ='/mnt/c/Users/komori/Desktop/1MeV刻みごとのデータ/accuracydata.txt'
+path_w4 ='/mnt/c/Users/komori/Desktop/correct_output.txt'
 y_test_sum=np.sum(y_test,axis=0)#各ビン毎に足し合わせる
 #y_testt=y_testt.reshape(1,30)#各ビンごとに足し合わせる
 predict_sum=np.sum(predict,axis=0)#各ビンごとに足し合わせる
 #predictt=predictt.reshape(1,30)#各ビンごとに足し合わせる
-
+predict_max=predict.argmax(axis=1)#出力値を返す
+y_test_max=y_test.argmax(axis=1)
+print(predict.argmax(axis=1))
+print(y_test.argmax(axis=1))
+connect=np.c_[y_test_max,predict_max]
 #y_test=np.r_[y_test,y_testt]#
 #predict=np.r_[predict,predictt]
-#y_test=np.savetxt(path_w1,y_test,delimiter=",",fmt="%s")
-#predict=np.savetxt(path_w2,predict,delimiter=",",fmt="%s")
+y_test=np.savetxt(path_w1,y_test,delimiter=",",fmt="%s")
+predict=np.savetxt(path_w2,predict,delimiter=",",fmt="%s")
+correct_output=np.savetxt(path_w4,connect,delimiter=" ",fmt="%s")
 #np.savetxt(path_w3,np.c_[y_test_sum,predict_sum],delimiter=" ",fmt="%s")
 # print(y_test)
 
@@ -158,3 +164,4 @@ predict=np.savetxt(path_w2,predict,delimiter=",",fmt="%s")
 
 
 """
+
