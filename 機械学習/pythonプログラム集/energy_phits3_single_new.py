@@ -12,48 +12,53 @@ import csv #csvファイルの読みこみ
 
 def LoadData(DataPath,Nrows=None):
     df=pd.read_csv(DataPath,sep=',')#データをロードする関数。dfを戻り値にする
-    return
+    return df
 
-def FeatEng(dfX):
+def FeatEng(df):
     
-   # dfX=dfX.sample(frav=1)
-    dfX=dfX.values
-    dfX=dfX[0:,0:10]
-    dfY =dfX[0:,19]
-    x_hit = (dfX > 0).sum(axis=1)#何層当たったかをこのコラムに入れる
-    dfX=np.c[dfX,x_hit]
-    dfX = (dfX - dfX.mean())/dfX.std(ddof=0)#標準化
+    df=df.sample(frac=1)
+    df=df.values
+    dfX=df[0:2500000,0:10]
+    dfY=df[0:2500000,19]
+   # x_hit = (dfX > 0).sum(axis=1)#何層当たったかをこのコラムに入れる
+   # dfX=np.c_[dfX,x_hit]
+   # dfX = (dfX - dfX.mean())/dfX.std(ddof=0)#標準化
     ymean = dfY.mean()
     ystd = dfY.std(ddof=0)
-    dfY = (dfY - ymean)/ystd#正解値の方も標準化
+  #  dfY = (dfY - ymean)/ystd#正解値の方も標準化
     
     return dfX,dfY,ystd,ymean
 
 
-#def split(dfX,dfY):
-#    x_train=dfX[0:1000000]
-#    x_test=dfX[1000000:1500000]
-#    y_train=dfY[0:1000000]
-#    x_test=dfY[1000000:1500000]
+def split(dfX,dfY):
+    x_train=dfX[0:2000000,0:10]
+    x_test=dfX[2000000:2500000,0:10]
+    y_train=dfY[0:2000000]
+    y_test=dfY[2000000:2500000]
     
-#    return x_train,y_train,y_test,y_test
+    return x_train,y_train,x_test,y_test
+
+
+
+
+
 
 if __name__=="__main__":
     
-    dfX = LoadData("output1.csv", Nrows=None)
-    print(dfX)
-    dfX,dfY, ystd, ymean = FeatEng(dfX)
-    x_train,y_train,y_test,y_test=split(dfX,dfY)
+    df = LoadData("output1.csv", Nrows=None)
+    print(df)
+    dfX,dfY, ystd, ymean = FeatEng(df)
+    x_train,y_train,x_test,y_test=split(dfX,dfY)
     print(x_train)
-
+    print(y_test)
 
     model = Sequential()
-    model.add(Dense(7,input_dim=10))
+    model.add(Dense(3,input_dim=10))
     model.add(Activation('relu'))
 
     
-    model.add(Dense(3))
-    model.add(Activation('relu'))
+#    model.add(Dense(3))
+#    model.add(Activation('relu'))
 
     model.add(Dense(1))
 
@@ -83,10 +88,13 @@ if __name__=="__main__":
     #print(np.c_[acc,loss,val_acc,val_loss])#配列の結合
 
     path_w3 ='test3.csv'
-    
+    path_w4 ='correct_output.txt'
     history=np.savetxt(path_w3,np.c_[mae,loss,val_mae,val_loss],delimiter=",",fmt="%s",header='mae,loss,va_mae,val_loss')
     
     predict=model.predict(x_test)
+    connect=np.c_[y_test,predict]
+    correct_output=np.savetxt(path_w4,connect,delimiter=" ",fmt="%s")
+
     #path_w1 ='/mnt/test1.csv'
     #path_w2 ='/mnt/c/Users/komori/Desktop/test2.csv'
     
@@ -100,36 +108,3 @@ if __name__=="__main__":
     model.save_weights('weihgts.h5');
     open('model.json','w').write(json_string)
     
-
-"""
-#一つ一つの値を評価させている
-xx_test=data[910000,0:3]
-xx_test=xx_test.reshape(1,3)
-print(np.shape(xx_test))
-
-yy_test=data[910000,6]
-yy_test=(yy_test-1)
-yy_test=np.trunc(yy_test)
-print('xx_test',xx_test)
-print(yy_test)
-yy_test=np_utils.to_categorical(yy_test,100)#ワンホット化
-yy_test=yy_test.reshape(1,100)
-print(np.shape(yy_test))
-#print('xx_test',xx_test)
-print('yy_test',yy_test)
-model.evaluate(xx_test,yy_test,verbose=0)
-
-predict=model.predict(xx_test)
-print(predict)
-
-
-#ファイル書き出しについて
-path_w1 ='/mnt/c/Users/komori/Desktop/test1.csv'
-path_w2 ='/mnt/c/Users/komori/Desktop/test2.csv'
-#with open(path_w,mode='w') as f:
-yy_test=np.savetxt(path_w1,yy_test,delimiter=",",fmt="%s")
-predict=np.savetxt(path_w2,predict,delimiter=",",fmt="%s")
-#    f.write(yy_test)
-
-
-"""

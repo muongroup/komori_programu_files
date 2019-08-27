@@ -23,7 +23,7 @@ void comparehist(){
   std::ofstream bitdata("bitdata.txt");   
 
   TCanvas *cvs1=new TCanvas("background","background",900,900);//TCanvasを用いることでいくつものグラフを一斉に表示できる 
-  std::ifstream back("compressno0200.txt");//バックグラウンドのデータ                                                                                                                                              
+  std::ifstream back("OBoutput321.txt");//バックグラウンドのデータ                                                                                                                                              
   TH2D *background =new TH2D("background measurement","",31,-15.5,15.5,31,-15.5,15.5);//バックグラウンドデータをプロット  
   background->SetStats(0);//統計ボックス
   background->SetTitle("Background_measurement");
@@ -43,7 +43,7 @@ void comparehist(){
     
  
   TCanvas *cvs2=new TCanvas("object","object",900,900);
-  std::ifstream ob("compress0200.txt");
+  std::ifstream ob("OBoutput380.txt");
   TH2D *object =new TH2D("object measument","",31,-15.5,15.5,31,-15.5,15.5);//                                                                                                        
   object->SetTitle("Object_measurement");
   object->GetXaxis()->SetTitle("deltaX");
@@ -66,7 +66,7 @@ void comparehist(){
  TCanvas *cvs3=new TCanvas("substraction","substraction",900,900);
   TH2D *substraction =new TH2D("substraction ","",31,-15.5,15.5,31,-15.5,15.5);
  substraction-> SetTitle("substraction");
- substraction->Add(background,object,1,-1);//両データを計測時間で割る
+ substraction->Add(background,object,0.003125,-0.00262158);//両データを計測時間で割る
  substraction->GetXaxis()->SetTitle("deltaX");
  substraction->GetXaxis()->CenterTitle();
  substraction->GetYaxis()->SetTitle("deltaY");
@@ -77,7 +77,7 @@ void comparehist(){
 
  TCanvas *cvs4=new TCanvas("attenuation","attenuation",900,900);
  TH2D *attenuation =new TH2D("attenuation rate","",31,-15.5,15.5,31,-15.5,15.5);
- attenuation->Divide(background,object,1,1);
+ attenuation->Divide(background,object,0.003125,0.00262158);
  attenuation->SetTitle("Attenuation");
  attenuation->GetXaxis()->SetTitle("deltaX");
  attenuation->GetXaxis()->CenterTitle();

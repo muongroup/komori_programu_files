@@ -71,18 +71,18 @@ print(np.shape(y_train))
 
 
 model = Sequential()
-model.add(Dense(3,input_dim=10))
+model.add(Dense(7,input_dim=10))
 model.add(Activation('relu'))
 
 
 #model.add(Dense(1000))
 #model.add(Activation('relu'))
 
-#model.add(Dense(3))
+#model.add(Dense(5))
 #model.add(Activation('relu'))
 
-#model.add(Dense(100))
-#model.add(Activation('relu'))
+model.add(Dense(3))
+model.add(Activation('relu'))
 
 
 model.add(Dense(1))
@@ -94,7 +94,7 @@ model.add(Dense(1))
 #model.compile(loss='binary_crossentropy',optimizer=SGD(lr=0.01),metrics=['mae'])
 model.compile(loss='mean_squared_error',optimizer=Adam(lr=0.001,beta_1=0.9,beta_2=0.999,epsilon=None,decay=0.0,amsgrad=False),metrics=['mae'])
 
-epochs=50
+epochs=20
 batch_size=50
 
 result=model.fit(x_train,y_train,epochs=epochs,batch_size=batch_size,validation_data=(x_test,y_test))

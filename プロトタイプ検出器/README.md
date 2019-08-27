@@ -21,3 +21,7 @@
 - 減衰率を導出するプログラム
 
 
+重要なのはdata_analysis_pre1.cppとehistnew190711.cpp。
+ehistnew190711.cppさえあればコインシデンス後のベクトルプロット
+をだしてくれる。
+data_analysis_pre1.cppはコインシデンス前の各MPPCのスペクトルを画面に表示

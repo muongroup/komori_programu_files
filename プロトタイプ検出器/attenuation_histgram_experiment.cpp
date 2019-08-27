@@ -24,13 +24,13 @@ void attenuation_histgram_experiment(){
   Double_t y_max=15.5; 
 
   char output1[]="BGoutput.txt";
-  char output2[]="OBoutput321.txt";
+  char output2[]="OBoutput380.txt";
   Double_t background_time;
   Double_t object_measurement_time;
   Double_t rate;
 
   background_time=451;
-  object_measurement_time=321;
+  object_measurement_time=380;
 
   rate=background_time/object_measurement_time;
 

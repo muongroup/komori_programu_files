@@ -11,25 +11,25 @@ import pandas as pd
 import csv #csvファイルの読みこみ
 
 #/home/komori/python_practice/machine_learning_data_set/
-data1 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data1_5_1.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
-data2 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data1_5_2.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
-data3 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data1_5_3.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
+data1 = pd.read_csv('output1.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
+#data2 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data1_5_2.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
+#data3 = pd.read_csv('/mnt/c/Users/komori/Desktop/machine_learning_data_set/data1_5_3.csv',sep=',')#csvファイルを読み込んだ一番上の行をラベルと認識してくれる 
 
 #print(type(data))
-data1=data1.sample(frac=1)#データのシャッフル
-data1=data1.values#pandasをnumpyに変更
-data2=data2.sample(frac=1)#データのシャッフル
-data2=data2.values#pandasをnumpyに変更
-data3=data3.sample(frac=1)#データのシャッフル
-data3=data3.values#pandasをnumpyに変更
+data=data.sample(frac=1)#データのシャッフル
+data=data.values#pandasをnumpyに変更
+#data2=data2.sample(frac=1)#データのシャッフル
+#data2=data2.values#pandasをnumpyに変更
+#data3=data3.sample(frac=1)#データのシャッフル
+#data3=data3.values#pandasをnumpyに変更
 
-data=np.r_[data1,data2,data3]
+#data=np.r_[data1,data2,data3]
 #print(type(data))
 print(np.shape(data))
 #print(data[4])
 
 #学習用のデータ
-x_train=data[0:1000000,0:4]#配列の0列目からシンチの付与エネルギー情報が入っている
+x_train=data[0:2000000,0:10]#配列の0列目からシンチの付与エネルギー情報が入っている
 print(x_train)
 #x_train=x_train**2#二乗
 #x_train=np.log10(x_train)#log10
@@ -37,7 +37,7 @@ print(x_train)
 x_train=x_train.round(1)
 #print(np.shape(x_train))
 #print(x_train)
-y_train=data[0:1000000,19]#入射エネルギー情報をとってくる
+y_train=data[0:2000000,19]#入射エネルギー情報をとってくる
 print(y_train)
 y_train=np.ceil(y_train)
 y_train=y_train-1
@@ -49,13 +49,13 @@ y_train/=1
 print(y_train)
 
 #テスト用のデータ
-x_test=data[2500000:2900000,0:4]
+x_test=data[200000:2500000,0:4]
 #x_test=x_test**2 #データの前処理二乗
 #x_test=np.log10(x_test)#データの前処理ログ
 #print(np.shape(x_test))
 #print(x_test)
 x_test=x_test.round(1)
-y_test=data[2500000:2900000,19]
+y_test=data[200000:2500000,19]
 
 #print(np.shape(y_test))
 #print(y_test)
@@ -79,7 +79,7 @@ y_test=np_utils.to_categorical(y_test,300)#ワンホット化
 
 
 model = Sequential()
-model.add(Dense(1000,input_dim=4))
+model.add(Dense(1000,input_dim=10))
 model.add(Activation('relu'))
 
 
@@ -132,8 +132,9 @@ val_loss=result.history['val_loss']#検証用データの損失関数
 print(acc)#
 print(np.c_[acc,loss,val_acc,val_loss])#配列の結合
 
-path_w3 ='/mnt/c/Users/komori/Desktop/test3.csv'
-
+path_w3 ='test3.csv'
+path_w4 ='correct_output.txt'
+path_w5 ='correct_output.csv'
 history=np.savetxt(path_w3,np.c_[acc,loss,val_acc,val_loss],delimiter=",",fmt="%s",header='acc,loss,val_acc,val_loss')
 
 predict=model.predict(x_test)
@@ -143,6 +144,16 @@ predict=model.predict(x_test)
 #y_test=np.savetxt(path_w1,y_test,delimiter=",",fmt="%s")
 #predict=np.savetxt(path_w2,predict,delimiter=",",fmt="%s")
 # print(y_test)
+predict_max=predict.argmax(axis=1)
+print(y_test.argmax(axis=1))
+connect=np.c_[y_test_max,predict_max]
+correct_output=np.savetxt(path_w4,connect,delimiter=" ",fmt="%s")
+
+
+
+#検証用のデータをあとから使うために保存する
+test_data=np.c_[x_test,y_test]
+history=np.savetxt(path_w5,test_data,delimiter=",",fmt="%s",header='pla1,pla2,pla3,iron1,iron2,incident')
 
 #重みを保存する
 json_string=model.to_json()
