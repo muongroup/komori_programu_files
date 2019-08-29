@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<string>
 #include<sstream>
@@ -23,14 +24,14 @@ void attenuation_histgram_experiment_xyhalf(){
   Double_t y_min=-7.5;
   Double_t y_max=7.5; 
 
-  char output1[]="BGoutput_xyhalf.txt";
-  char output2[]="OBoutput_xyhalf273.txt";
+  char output1[]="BGoutput451_xy.txt";
+  char output2[]="OBoutput380_xy.txt";
   Double_t background_time;
   Double_t object_measurement_time;
   Double_t rate;
 
   background_time=451;
-  object_measurement_time=273;
+  object_measurement_time=380;
 
   rate=background_time/object_measurement_time;
 
