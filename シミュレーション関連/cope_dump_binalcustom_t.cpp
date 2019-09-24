@@ -48,7 +48,7 @@ int main(){
    
       
    std::ofstream ofst;
-   ofst.open("compress15.txt",ios::app);// 
+   ofst.open("compress.txt",ios::app);// 
    
    std::ofstream spectrum1;
    spectrum1.open("energyspectrum44.txt");

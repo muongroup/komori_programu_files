@@ -21,3 +21,7 @@
 
 ### histogram_one_dimenson_eight.cpp
 - 8つ分のデータをヒストグラムに書き表すプログラム
+
+### graph_templete.cpp
+- 8つ分のデータをヒストグラムに書き表すプログラム
+

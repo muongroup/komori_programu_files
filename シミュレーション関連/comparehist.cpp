@@ -22,9 +22,9 @@ void comparehist(){
   gStyle->SetPalette(1);
 
   
-  std::ifstream file1("back_compress1000.txt");//バックグラウンドのデータ
-  std::ifstream file2("compressno1000.txt");//対象物のデータ
-  std::ifstream file3("compress1000.txt");//対象物のデータ
+  std::ifstream file1("back_compress.txt");//バックグラウンドのデータ
+  std::ifstream file2("compressno.txt");//対象物のデータ
+  std::ifstream file3("compress.txt");//対象物のデータ
   
   TCanvas *cvs1=new TCanvas("background","background",900,900);//TCanvasを用いることでいくつものグラフを一斉に表示できる 
 
