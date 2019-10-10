@@ -14,9 +14,9 @@
 #include "TMath.h"
 int test_ana(){
   
+  gStyle->SetFrameLineWidth(3);
   
-  
-  ifstream file1("a000000.csv");
+  ifstream file1("d000000.csv");
   TH1D*hist1=new TH1D("","",512,0,512);
   TH1D*hist2=new TH1D("","",512,0,512);
   TH1D*hist3=new TH1D("","",512,0,512);
@@ -24,6 +24,7 @@ int test_ana(){
   counter1=0;
   counter2=0;
   counter3=0;
+  Double_t measurement_hour=24;
   
   while(!file1.eof())
     {
@@ -35,23 +36,29 @@ int test_ana(){
       //    cout<<time<<" "<<number<<" "<<ch<<endl;
     if(number==1)
       {
-	hist1->Fill(ch);    
+	hist1->Fill(ch,1/measurement_hour);
+	counter1++;
       }
     if(number==2)
       {
-	hist2->Fill(ch);    
+	hist2->Fill(ch,1/measurement_hour);
+	counter2++;
       }
     if(number==3)
       {
-	hist3->Fill(ch);    
+	hist3->Fill(ch,1/measurement_hour);
+	counter3++;
       }
     }
   hist1->Draw("hist");
   hist1->SetLineColor(2);
-  hist2->Draw("same");
+  hist1->SetLineWidth(2);
+  hist2->Draw("same hist");
   hist2->SetLineColor(4);
-  hist3->Draw("same");
+  hist2->SetLineWidth(2);
+  hist3->Draw("same hist");
   hist3->SetLineColor(1);
+  hist3->SetLineWidth(2);
   
   cout<<"counter1 counter2 counter3"<<endl;
   cout<<counter1<<" "<<counter2<<" "<<counter3<<endl;
