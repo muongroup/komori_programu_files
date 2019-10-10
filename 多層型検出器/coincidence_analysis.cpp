@@ -60,7 +60,7 @@ int coincidence_analysis(){
 
       if(number != before_number && before_number != before2_number && number != before2_number)//3台コインシデンスのイベントを抽出する
 	{
-	  if(abs(time-before_time)<0.0000001 && abs(before_time-before2_time)<0.0000001)
+	  if(abs(time-before_time)<0.000001 && abs(before_time-before2_time)<0.000001)
 	    {
 	      if(number==1)
 		{
@@ -134,15 +134,15 @@ int coincidence_analysis(){
           
       
       
-      if(abs(time-before_time)>0.0000001 && abs(before_time-before2_time)<0.0000001 && abs(before3_time-before2_time)>0.0000001)//
+      if(abs(time-before_time)>0.000001 && abs(before_time-before2_time)<0.000001 && abs(before3_time-before2_time)>0.000001)//
 	{
-	  if(before_number==1 && before2_number==3)
+	  if(before_number==1 && before2_number==2)
 	    {
 		  hist4->Fill(before_ch,1/measurement_hour);
 		  hist5->Fill(before2_ch,1/measurement_hour);	
 	       cout<<"1 "<<before_ch<<endl;
 	    }
-	  if(before_number==3 && before2_number==1)
+	  if(before_number==2 && before2_number==1)
 	    {
 		  hist4->Fill(before2_ch,1/measurement_hour);
 		  hist5->Fill(before_ch,1/measurement_hour);	
