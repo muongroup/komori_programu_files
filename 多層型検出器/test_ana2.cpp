@@ -22,10 +22,11 @@ int test_ana2(){
   TH1D *hist3=new TH1D("hist3","hist3",512,0,512);
   Int_t counter1,counter2,counter3;
   Double_t time,before_time;
-  Int_t number;
+  Int_t number,before_number;
   Double_t ch;
   char dummy1,dummy2;
   Double_t measurement_hour=24;
+  before_number=0;
   before_time=0;
   counter1=0;
   counter2=0;
@@ -39,18 +40,19 @@ int test_ana2(){
     {
       
       file1>>time>>dummy1>>number>>dummy2>>ch;
-      //    cout<<time<<" "<<number<<" "<<ch<<endl;
+      // cout<<time<<" "<<number<<" "<<ch<<endl;
       time=time/1000000000;
 
 
 
 
-      if(abs(time-before_time)<0.000001)
+      if((abs(time-before_time)<0.0000001))
 	{
 	  if(number==1)
 	    {
 	      hist1->Fill(ch,1/measurement_hour);
 	      counter1++;
+	      // cout<<time<<" "<<number<<" "<<ch<<endl;
 	    }
 	  if(number==2)
 	    {
@@ -65,6 +67,7 @@ int test_ana2(){
 	}
     
       before_time=time;
+      before_number=number;
     }
   hist1->Draw("hist");
   hist2->Draw("same hist");

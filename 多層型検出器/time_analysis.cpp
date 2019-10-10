@@ -23,7 +23,7 @@ int time_analysis(){
   
   TCanvas *cvs1=new TCanvas("cvs1","cvs1",1200,1000); 
   TH1D *hist=new TH1D("hist","hist",1000000,0,1000000);
-  TH1D *hist1=new TH1D("hist1","hist1",10000,0,1000000000);
+  TH1D *hist1=new TH1D("hist1","hist1",10000,0,10000);
   TH1D *hist2=new TH1D("hist2","hist2",10000,0,1000000000);
   TH1D *hist3=new TH1D("hist3","hist3",10000,0,1000000000);
   Int_t COUNTER;//全体を数えるカウンター
@@ -58,7 +58,7 @@ int time_analysis(){
 
 
       // hist->Fill(time-before_time);
-      /*   
+        
 	  if(number==1)
 	    {
 	     
@@ -66,6 +66,7 @@ int time_analysis(){
 	      counter1++;
 	       before_time1=time;	      
 	    }
+	  /*
 	  if(number==2)
 	    {
 	      hist2->Fill(time-before_time2);
@@ -88,6 +89,7 @@ int time_analysis(){
     
       before_number=number;  
       before_time=time;//一つ前の時間情報を取得
+ 
       COUNTER++;
     }
   hist->Draw("hist");
