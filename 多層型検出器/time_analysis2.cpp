@@ -1,8 +1,16 @@
+
+
+
+
+
 #include<iostream>
 #include<string>
 #include<sstream>
 #include<fstream>
 #include<math.h>
+#include <vector>
+#include <algorithm>
+#include <dirent.h>
 #include "TStyle.h"
 #include "TH1F.h"
 #include "TH2F.h"
@@ -12,15 +20,16 @@
 #include "TCanvas.h"
 #include "TROOT.h"
 #include "TMath.h"
-int time_analysis(){
-  
+bool StrString(const char *s1,const char *s2);
+int time_analysis2(){
+    
   gStyle->SetFrameLineWidth(3);  
   
   TCanvas *cvs1=new TCanvas("cvs1","cvs1",1200,1000); 
-  TH1D *hist=new TH1D("hist","hist",10000,0,10000);
-  /* TH1D *hist1=new TH1D("hist1","hist1",10000,0,10000);
-  TH1D *hist2=new TH1D("hist2","hist2",10000,0,1000000000);
-  TH1D *hist3=new TH1D("hist3","hist3",10000,0,1000000000);*/
+  TH1D *hist=new TH1D("hist","hist",48,0,24);
+  TH1D *hist1=new TH1D("hist1","hist1",48,0,24);
+  TH1D *hist2=new TH1D("hist2","hist2",48,0,24);
+  TH1D *hist3=new TH1D("hist3","hist3",48,0,24);
   Int_t COUNTER;//全体を数えるカウンター
   Int_t counter1,counter2,counter3;
   Double_t time,before_time,before_time1,before_time2,before_time3;
@@ -30,69 +39,92 @@ int time_analysis(){
   Double_t measurement_hour=24;
   before_number=1;
   before_time=0;
- 
+  before_time1=0;
+  before_time2=0;
+  before_time3=0;
   COUNTER=0;
   counter1=0;
   counter2=0;
   counter3=0;
 
 
-   ifstream file1("d000000.csv");
-   
-   
-  while(!file1.eof())
+   ifstream file1("test.csv");
+
+
+
+
+   //   for(Int_t i=0;i<100;i++)
+     
+   while(!file1.eof())
     {
       
       file1>>time>>dummy1>>number>>dummy2>>ch;
-      //  cout<<time<<" "<<number<<" "<<ch<<endl;
-      //   time=time;
+
+      time=(time/1000000000)/3600;
+       cout<<time<<endl;
+      
+
+      // hist->Fill(time-before_time);
+      
+	  if(number==1)
+	    {
+	      
+	      hist1->Fill(time);
+	      counter1++;
+	      
+	    }
+	  if(number==2)
+	    {
+	      
+	      hist2->Fill(time);
+	      counter2++;
+	      
+	    }
+	  if(number==3)
+	    {
+	      
+	      hist3->Fill(time);
+	      counter3++;
+	     
+	    }
+      
+	  hist->Fill(time);	  
 
 
-
-      hist->Fill(abs(time-before_time));
-    
-        
-       if(number==1)
-	 {
-	   counter1++;
-	 }
-       
-       if(number==2)
-	 {
-	   counter2++;
-	 }
-       if(number==3)
-	 {
-	   counter3++;
-	 }
-    
-	  
-    
-      before_number=number;  
-      before_time=time;//一つ前の時間情報を取得
  
-      COUNTER++;
-      } 
-	  
+	  COUNTER++;
+    }
   hist->Draw("hist");
-  // hist1->Draw("same hist");
-  // hist2->Draw("same hist");
-  // hist3->Draw("same hist");
+  hist1->Draw("same hist");
+  hist2->Draw("same hist");
+  hist3->Draw("same hist");
   
   hist->SetLineColor(3);
   hist->SetLineWidth(3);
-  /* 
+ 
   hist1->SetLineColor(2);
   hist1->SetLineWidth(3);
   hist2->SetLineColor(4);
   hist2->SetLineWidth(3);
   hist3->SetLineColor(1);
   hist3->SetLineWidth(3);
-  */
 
+  // hist1->Fit("landau");
 
   cout<<"COUNTER counter1 counter2 counter3"<<endl;
   cout<<COUNTER<<" "<<counter1<<" "<<counter2<<" "<<counter3<<endl;  
-  
+
+
+
+
+
+
+
+
+
     return 0;
     }
+
+
+
+
