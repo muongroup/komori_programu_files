@@ -1,0 +1,7 @@
+import numpy as np
+
+
+
+x=np.random.normal(4.173,0.1119,50)
+print(x)
+np.savetxt('randomsample.txt',x)

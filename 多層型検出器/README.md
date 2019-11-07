@@ -15,5 +15,9 @@
 ### coincidence_analysis.cpp
 - 横軸に時間差を取ってプロットするプログラム
 
+### overflow_adjustment.cpp
+- 信号を二つに分けてゲインを変えたそれぞれの信号をプロットし、その倍率を表示するプログラム
 
-
+### correct_overflowdata.cpp
+- 倍率のガウス分布をもとにサンプリングした倍率値をかけて
+　パイルアップしたchの真のch値を導出してプロットする

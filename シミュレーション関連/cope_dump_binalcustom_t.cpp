@@ -253,7 +253,7 @@ std::ofstream spectrum4;
 	   // int xxuu,yyuu;
 	   vec_x=round(xu-xd);//ベクトルを求める                                                                                                                                                            
 	   vec_y=-round(yu-yd);//ベクトルを求める                                                                                                                                                         
-	   // cout<<vec_x<<" "<<vec_y<<endl;
+	   spectrum1<<vec_x<<" "<<vec_y<<" "<<e<<endl;
 	   // ofs<<vec_x<<" "<<vec_y<<endl;//hist_data2.txt
 	   // ofstr<<yu<<" "<<xu+16<<" "<<yd+32<<" "<<xd+48<<" "<<endl;
 	   /*

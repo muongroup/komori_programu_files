@@ -29,7 +29,7 @@ int overflow_adjustment(){
 
 
 
-  TH1D *hist1=new TH1D("LOW_GAIN","LOW_GAIN",1024,0,1024);//三大コインシデンス
+  TH1D *hist1=new TH1D("LOW_GAIN","LOW_GAIN",1024,0,1024);
   TH1D *hist2=new TH1D("HIGH_GAIN","HIGH_GAIN",1024,0,1024);//三大コインシデンス
   TH1D *hist3=new TH1D("LOW_COMP","LOW_COMP",1024,0,1024);//三大コインシデンス
   TH1D *hist4=new TH1D("HIGH_COMP","HIGH_COMP",1024,0,1024);//三大コインシデンス

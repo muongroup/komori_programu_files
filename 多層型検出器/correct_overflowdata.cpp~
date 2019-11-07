@@ -1,0 +1,63 @@
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<fstream>
+#include<math.h>
+#include "TStyle.h"
+#include "TH1F.h"
+#include "TH2F.h"
+#include "TH1D.h"
+#include "TH2D.h"
+#include "TGraph2D.h"
+#include "TCanvas.h"
+#include "TROOT.h"
+#include "TMath.h"
+int correct_overflowdata(){
+
+
+  ifstream file1("h000000.csv");
+  ifstream file2()
+  char dummy1,dummy2;
+  double time,number,ch;
+  double before_time=0;
+  double before_number=0;
+  double before_ch=0;
+  double threshold_time=0.000005;
+  int counter=0;
+  while(!file1.eof())
+    {
+
+      file1>>time>>dummy1>>number>>dummy2>>ch;
+      time=time/1000000000;
+      if(abs(before_time-time)<threshold_time)
+	{
+	  if(before_ch==1023)
+	    {cout<<before_time<<" "<<before_number<<" "<<before_ch<<" "<<ch*sample[i]<<endl;
+	      i++;
+	      counter++;
+	    }
+	  if(ch==1023)
+	    {
+	      cout<<time<<" "<<number<<" "<<ch<<" "<<before_ch*sample[i]<<endl;
+	      counter++;
+	      i++;
+	    }
+
+	}  
+	  before_ch=ch;
+	  before_number=number;
+	  before_time=time;
+
+	 
+	  
+	  
+	
+
+
+
+    }
+ cout<<counter<<endl;
+
+  return 0;
+  
+}
