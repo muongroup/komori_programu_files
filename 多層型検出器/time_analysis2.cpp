@@ -26,10 +26,10 @@ int time_analysis2(){
   gStyle->SetFrameLineWidth(3);  
   
   TCanvas *cvs1=new TCanvas("cvs1","cvs1",1200,1000); 
-  TH1D *hist=new TH1D("hist","hist",48,0,24);
-  TH1D *hist1=new TH1D("hist1","hist1",48,0,24);
-  TH1D *hist2=new TH1D("hist2","hist2",48,0,24);
-  TH1D *hist3=new TH1D("hist3","hist3",48,0,24);
+  TH1D *hist=new TH1D("hist","hist",144,0,24);
+  TH1D *hist1=new TH1D("hist1","hist1",144,0,24);
+  TH1D *hist2=new TH1D("hist2","hist2",144,0,24);
+  TH1D *hist3=new TH1D("hist3","hist3",144,0,24);
   Int_t COUNTER;//全体を数えるカウンター
   Int_t counter1,counter2,counter3;
   Double_t time,before_time,before_time1,before_time2,before_time3;
@@ -48,7 +48,7 @@ int time_analysis2(){
   counter3=0;
 
 
-   ifstream file1("test.csv");
+   ifstream file1("j000000.csv");
 
 
 
@@ -61,7 +61,7 @@ int time_analysis2(){
       file1>>time>>dummy1>>number>>dummy2>>ch;
 
       time=(time/1000000000)/3600;
-       cout<<time<<endl;
+      // cout<<time<<endl;
       
 
       // hist->Fill(time-before_time);

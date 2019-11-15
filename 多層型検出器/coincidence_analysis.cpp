@@ -29,18 +29,18 @@ int coincidence_analysis(){
 
 
 
-  TH1D *hist1=new TH1D("DETECTOR1_row","Detector1_row",512,0,512);//三大コインシデンス
-  TH1D *hist2=new TH1D("DETECTOR2_row","DETECTOR2_row",512,0,512);//三大コインシデンス
-  TH1D *hist3=new TH1D("DETECTOR3_row","DETECTOR3_row",512,0,512);//三大コインシデンス
-  TH1D *hist4=new TH1D("DETECTOR1_triple_coin","Detector1_triple_coin",512,0,512);//三大コインシデンス
-  TH1D *hist5=new TH1D("DETECTOR2_triple_coin","DETECTOR2_triple_coin",512,0,512);//三大コインシデンス
-  TH1D *hist6=new TH1D("DETECTOR3_triple_coin","DETECTOR3_triple_coin",512,0,512);//三大コインシデンス
-  TH1D *hist7=new TH1D("DETECTOR1_1_and_2","DETECTOR1_1_and_2",512,0,512);//2大コインシデンス
-  TH1D *hist8=new TH1D("DETECTOR1_1_and_3","DETECTOR1_1_and_3",512,0,512);//2大コインシデンス
-  TH1D *hist9=new TH1D("DETECTOR2_1_and_2","DETECTOR2_1_and_2",512,0,512);//2大コインシデンス
-  TH1D *hist10=new TH1D("DETECTOR3_1_and_3","DETECTOR3_1_and_3",512,0,512);//2大コインシデンス
-  TH1D *hist11=new TH1D("DETECTOR2_2_and_3","DETECTOR2_1_and_2",512,0,512);//2大コインシデンス
-  TH1D *hist12=new TH1D("DETECTOR3_2_and_3","DETECTOR3_1_and_3",512,0,512);//2大コインシデンス
+  TH1D *hist1=new TH1D("DETECTOR1_row","Detector1_row",1024,0,1024);//三大コインシデンス
+  TH1D *hist2=new TH1D("DETECTOR2_row","DETECTOR2_row",1024,0,1024);//三大コインシデンス
+  TH1D *hist3=new TH1D("DETECTOR3_row","DETECTOR3_row",1024,0,1024);//三大コインシデンス
+  TH1D *hist4=new TH1D("DETECTOR1_triple_coin","Detector1_triple_coin",1024,0,1024);//三大コインシデンス
+  TH1D *hist5=new TH1D("DETECTOR2_triple_coin","DETECTOR2_triple_coin",1024,0,1024);//三大コインシデンス
+  TH1D *hist6=new TH1D("DETECTOR3_triple_coin","DETECTOR3_triple_coin",1024,0,1024);//三大コインシデンス
+  TH1D *hist7=new TH1D("DETECTOR1_1_and_2","DETECTOR1_1_and_2",1024,0,1024);//2大コインシデンス
+  TH1D *hist8=new TH1D("DETECTOR1_1_and_3","DETECTOR1_1_and_3",1024,0,1024);//2大コインシデンス
+  TH1D *hist9=new TH1D("DETECTOR2_1_and_2","DETECTOR2_1_and_2",1024,0,1024);//2大コインシデンス
+  TH1D *hist10=new TH1D("DETECTOR3_1_and_3","DETECTOR3_1_and_3",1024,0,1024);//2大コインシデンス
+  TH1D *hist11=new TH1D("DETECTOR2_2_and_3","DETECTOR2_1_and_2",1024,0,1024);//2大コインシデンス
+  TH1D *hist12=new TH1D("DETECTOR3_2_and_3","DETECTOR3_1_and_3",1024,0,1024);//2大コインシデンス
 
 
   hist1->SetStats(0);
@@ -53,7 +53,7 @@ int coincidence_analysis(){
   Int_t number,before_number,before2_number,before3_number;
   Double_t ch,before_ch,before2_ch,before3_ch;
   char dummy1,dummy2;
-  Double_t measurement_hour=24;
+  Double_t measurement_hour=3;
   Double_t threshold_time=0.0000005;
   Double_t threshold_time_double=0.0000005;
   before_time=0;
@@ -80,7 +80,7 @@ int coincidence_analysis(){
   counter12=0;
 
 
-   ifstream file1("d000000.csv");
+   ifstream file1("n000000.csv");
    
    // for(Int_t i=0;i<200;i++)
      

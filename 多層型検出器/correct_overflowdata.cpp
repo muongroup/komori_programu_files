@@ -18,6 +18,7 @@ int correct_overflowdata(){
   TCanvas *cvs1=new TCanvas("RAW_DATA","RAW_DATA",1200,1000);
   TH1D *hist1=new TH1D("HIGH_GAIN","HIGH_GAIN",4000,0,4000);
   TH1D *hist2=new TH1D("HIGH_GAIN_C","HIGH_GAIN_C",4000,0,4000);//三大コインシデンス
+    TH1D *hist3=new TH1D("LOW_GAIN","LOW_GAIN",4000,0,4000);//三大コインシデンス
   cvs1->SetLogy();
 
   ifstream file1("h000000.csv");
@@ -82,6 +83,13 @@ int correct_overflowdata(){
 
 		}
 
+
+	if(number==1)
+	    {
+	      hist3->Fill(ch,1/measurement_hour);
+		
+		}
+
 	  before_ch=ch;
 	  before_number=number;
 	  before_time=time;
@@ -96,10 +104,13 @@ int correct_overflowdata(){
     }
   hist1->Draw("hist");
   hist2->Draw("hist same");
-  hist1->SetLineColor(4);
-  hist1->SetLineWidth(2);
+   hist3->Draw("hist same");
+  hist1->SetLineColor(2);
+  hist1->SetLineWidth(1);
   hist2->SetLineColor(2);
   hist2->SetLineWidth(2);
+   hist3->SetLineColor(4);
+  hist3->SetLineWidth(1);
  cout<<counter<<endl;
 
   return 0;

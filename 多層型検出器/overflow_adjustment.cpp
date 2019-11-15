@@ -67,7 +67,7 @@ int overflow_adjustment(){
  
 
    ifstream file1("h000000.csv");
-   
+   ofstream ofst1("sampling_data.txt");   
    // for(Int_t i=0;i<200;i++)
      
    while(!file1.eof())
@@ -102,6 +102,7 @@ int overflow_adjustment(){
 		  cout<<before_ch<<endl;
 		  cout<<ch<<endl;
 	      hist5->Fill(before_ch/ch);
+	      ofst1<<before_ch/ch<<endl;
 		}
 	    }
 	  if(number==2 && before_number==1)
@@ -113,6 +114,7 @@ int overflow_adjustment(){
 		  cout<<before_ch<<endl;
 		  cout<<ch<<endl;
 		  hist5->Fill(ch/before_ch);
+		  ofst1<<ch/before_ch<<endl;
 		}
 	    }
 	  
